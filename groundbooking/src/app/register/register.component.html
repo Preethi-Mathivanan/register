@@ -1,0 +1,95 @@
+<div class="container-fluid" style="text-align: center;" >
+    <h2>Registration Form</h2>
+ <form [formGroup]="registrationForm">
+ <div class="form-group" >
+  <input style="width: 12%; height: 20px;"
+  [class.is-invalid]="userName.invalid && userName.touched"
+     type="text"
+     name="name"
+     class="form-control"
+     required minLength="4"
+     formControlName="userName"
+     placeholder="userName"
+     >
+     <div *ngIf="registrationForm.get('userName').invalid && registrationForm.get('userName').touched">
+       <div *ngIf="userName.errors?.['required']">
+         UserName is required
+       </div>
+       <div *ngIf="userName.errors?.['minlength']">
+        UserName must atleast have more than 3 characters
+       </div>
+     </div>
+ </div>
+     
+     <div class="form-group">
+       <input style="width: 12%; height: 20px;" type="text" formControlName="email" class="form-control" placeholder="Email">
+       <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">
+        <div *ngIf="registrationForm.get('email').errors?.['required']">
+          email is required
+        </div>
+       </div>
+     </div>
+
+     <div class="form-group">
+      <input
+      style="width: 12%; height: 20px;"
+         type="password"
+         
+         class="form-control"
+         
+         formControlName="password"
+         placeholder="Password"
+         />
+        </div>
+
+        <div class="form-group">
+          <input
+          style="width: 12%; height: 20px;"
+             [class.is-invalid]="registrationForm.errors?.['misMatch']"
+             type="password"
+             
+             class="form-control"
+             
+             formControlName="confirmPassword"
+             placeholder="ConfirmPassword"
+             ><br>
+             <div class="text-danger" *ngIf="registrationForm.errors?.['misMatch']">
+               Passwords do not match
+             </div>
+            </div>
+
+            <div class="form-group">
+                 <input style="width: 12%; height: 20px;" type="text" formControlName="mobilenumber" class="form-control" placeholder="Mobile Number">
+              <div *ngIf="registrationForm.get('mobilenumber').invalid && registrationForm.get('mobilenumber').touched" class="alert alert-danger">
+                <div *ngIf="registrationForm.get('mobilenumber').errors?.['required']">Please enter mobile number</div>
+                <div *ngIf="registrationForm.get('mobilenumber').errors?.['pattern']">Mobile number is not 10 digit</div>
+              </div>
+            </div>
+
+<div formGroupName="address">
+  <div class="form-group">
+    <input style="width: 12%; height: 20px;" type="text" formControlName="ADDRESS" class="form-control" placeholder="Address">
+    
+  </div>
+            <div class="form-group">
+              <input style="width: 12%; height: 20px;" type="text" formControlName="city" class="form-control" placeholder="City">
+            </div>
+            
+            <div class="form-group">
+              <input style="width: 12%; height: 20px;" type="text" formControlName="state" class="form-control" placeholder="State">
+             </div>
+
+            <div class="form-group">
+               <input style="width: 12%; height: 20px;" type="text" formControlName="pinCode" class="form-control" placeholder="Pin Code">
+            </div>
+    </div> 
+
+     
+   
+   
+    <a routerLink="./login.component.html"><button class="btn btn-success" > Register </button></a>
+   
+</form>
+<P style="text-align:center">Already a user? <button type="button"   class="btn" (click)="gotoloanid()">Login</button></P>
+
+</div>
